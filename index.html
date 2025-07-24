@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InfoSpark 2k25 - Cybersecurity</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body, html {
+      height: 100%;
+      overflow-x: hidden;
+      background: #000;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      background: rgba(10, 10, 30, 0.9);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+      z-index: 1000;
+      border-bottom: 3px solid #0ff;
+    }
+
+    nav .logo {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #fff; /* Changed from #0ff to white */
+      text-shadow:
+        0 0 5px #0ff,
+        0 0 10px #0ff,
+        0 0 20px #0ff,
+        0 0 40px #0ff;
+      user-select: none;
+    }
+
+    nav .logo a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    nav .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      position: relative;
+      padding: 5px 0;
+      transition: color 0.3s ease;
+    }
+
+    nav .nav-links a:hover,
+    nav .nav-links a.active {
+      color: #0ff;
+      text-shadow: 0 0 8px #0ff;
+    }
+
+    nav .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #0ff;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    nav .nav-links a:hover::after,
+    nav .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      display: flex;
+      height: 100vh;
+      width: 100%;
+      padding-top: 80px; /* Account for navbar */
+      overflow: hidden;
+    }
+
+    .hero-video {
+      flex: 1;
+      height: 100%;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.7),
+                  0 0 50px rgba(0, 255, 255, 0.5);
+      border: 3px solid #0ff;
+      background-color: #000;
+    }
+
+    .hero-content {
+  flex: 1;
+  color: white;
+  padding: 3rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: url('first.jpg') center center/cover no-repeat, rgba(0,0,0,0.5);
+  background-blend-mode: darken;
+  border-radius: 20px;
+  margin: 2rem;
+  box-shadow:
+    0 0 30px #0ff,
+    inset 0 0 15px #0ff;
+  text-shadow:
+    0 0 5px #000,
+    0 0 10px #0ff;
+  animation: slideInRight 1s ease forwards;
+}
+
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 520px;
+      font-weight: 500;
+    }
+
+    .hero-content .btn {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #0ff, #08f);
+      border: none;
+      border-radius: 30px;
+      color: #fff;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      box-shadow: 0 0 10px #08f, 0 0 30px #0ff;
+      transition: background 0.3s ease;
+      align-self: flex-start;
+    }
+.glitch-heading {
+  position: relative;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  overflow: hidden;
+}
+
+.glitch-heading:hover::before,
+.glitch-heading:hover::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  color: #0ff;
+  z-index: -1;
+  clip: rect(0, 900px, 0, 0);
+  animation: glitch 0.9s infinite linear alternate-reverse;
+}
+
+.glitch-heading:hover::after {
+  color: #f0f;
+  animation-delay: 0.3s;
+}
+
+@keyframes glitch {
+  0% {
+    clip: rect(42px, 9999px, 44px, 0);
+    transform: translate(1px, -1px);
+  }
+  10% {
+    clip: rect(24px, 9999px, 65px, 0);
+    transform: translate(-3px, 3px);
+  }
+  20% {
+    clip: rect(12px, 9999px, 80px, 0);
+    transform: translate(2px, -2px);
+  }
+  30% {
+    clip: rect(65px, 9999px, 90px, 0);
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    clip: rect(25px, 9999px, 100px, 0);
+    transform: translate(3px, 1px);
+  }
+  50% {
+    clip: rect(10px, 9999px, 30px, 0);
+    transform: translate(-1px, -3px);
+  }
+  60% {
+    clip: rect(60px, 9999px, 100px, 0);
+    transform: translate(1px, 2px);
+  }
+  70% {
+    clip: rect(24px, 9999px, 40px, 0);
+    transform: translate(-3px, 1px);
+  }
+  80% {
+    clip: rect(75px, 9999px, 85px, 0);
+    transform: translate(2px, -1px);
+  }
+  90% {
+    clip: rect(34px, 9999px, 55px, 0);
+    transform: translate(-2px, 3px);
+  }
+  100% {
+    clip: rect(10px, 9999px, 60px, 0);
+    transform: translate(0, 0);
+  }
+}
+
+
+    .hero-content .btn:hover {
+      background: linear-gradient(135deg, #08f, #0ff);
+      box-shadow: 0 0 15px #0ff, 0 0 40px #08f;
+    }
+
+    @keyframes slideInRight {
+      0% {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-section {
+        flex-direction: column;
+        padding-top: 60px;
+      }
+
+      .hero-video,
+      .hero-content {
+        flex: none;
+        width: 90%;
+        margin: 1rem auto;
+        height: 300px;
+      }
+
+      .hero-video video {
+        height: 100%;
+      }
+
+      .hero-content {
+        height: auto;
+        margin-bottom: 3rem;
+      }
+
+    }
+.btn-3d {
+  background: linear-gradient(to right, #00f0ff, #0099ff);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  box-shadow:
+    0 4px #006d91,
+    0 6px 20px rgba(0, 255, 255, 0.4);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-3d:hover {
+  transform: translateY(-40px);
+  box-shadow:
+    0 6px 0 #006d91,
+    0 10px 20px rgba(0, 255, 255, 0.6);
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo"><a href="index.html">InfoSpark 2k25</a></div>
+    <div class="nav-links">
+      <a href="index.html">Main</a>
+      <a href="welcome.html">Home</a>
+      <a href="cyber-threats.html">Cyber Threats</a>
+      <a href="data-protection.html">Data Protection</a>
+      <a href="network-security.html">Network Security</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html" class="active">About Us</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="hero-video">
+      <video autoplay muted loop playsinline>
+        <source src="video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="hero-content">
+      <h1>Stay Ahead in Cybersecurity</h1>
+      <p>
+        In a rapidly evolving digital world, protecting your data and privacy is more important than ever.
+        Our mission is to keep you informed about the latest threats and best practices.
+      </p>
+      <p>
+        Explore expert insights on cyber threats, data protection techniques, and network security to safeguard yourself and your organization.
+      </p>
+      <button class="btn" onclick="window.location.href='cyber-threats.html'">Learn More</button>
+
+    </div>
+  </div>
+
+</body>
+</html>

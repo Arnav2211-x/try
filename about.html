@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - InfoSpark</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+  <div class="logo"><a href="index.html">InfoSpark 2k25</a></div>
+  <div class="nav-links">
+    <a href="index.html">Main</a>
+    <a href="welcome.html">Home</a>
+    <a href="cyber-threats.html">Cyber Threats</a>
+    <a href="data-protection.html">Data Protection</a>
+    <a href="network-security.html">Network Security</a>
+    <a href="resources.html">Resources</a>
+    <a href="about.html" class="active">About Us</a>
+  </div>
+</nav>
+
+  <!-- Main Content -->
+  <main class="page-content">
+    <h1>About InfoSpark 2k25</h1>
+    <p>InfoSpark 2k25 is a student-led initiative aimed at promoting cybersecurity awareness among school students, teachers, and parents. We believe that knowledge is the first line of defense in the digital age.</p>
+    <p>Project by: <strong>Arnav Jain</strong> & <strong>Karan Bajaj</strong> | Class 9C | Billabong High International School</p>
+
+    <!-- Contact Form Section -->
+    <section class="form-section">
+      <h2>Having Issues? Contact us! Fill This Form</h2>
+      <form onsubmit="sendEmail(event)">
+        <input type="text" name="from_name" placeholder="Your Name" required />
+        <input type="email" name="from_email" placeholder="Your Email" required />
+        <input type="text" name="phone" placeholder="Phone Number" />
+        <textarea name="message" placeholder="Describe your issue..." rows="5" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </main>
+
+ 
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+  <script>
+    emailjs.init("31QbCqc3Pwl5WklLF");
+
+    function sendEmail(e) {
+      e.preventDefault();
+
+      // First Email
+      emailjs.sendForm('service_es6nhj8', 'template_6ryz0xt', e.target)
+        .then(() => {
+          alert("📨 Form submitted! Check your email.");
+        }, (err) => {
+          alert("❌ Failed: " + err.text);
+        });
+
+      // Admin Notification
+      emailjs.sendForm('service_ol4hoea', 'template_dydlwjq', e.target)
+        .then(() => {
+          alert("📨 Message sent successfully. You will receive confirmation soon.");
+          e.target.reset();
+        }, (err) => {
+          alert("❌ Failed to notify admin:\n" + err.text);
+        });
+    }
+  </script>
+<footer>
+  <p>&copy; 2025 InfoSpark 2k25. All rights reserved. | <a href="index.html">Back to Main Page</a></p>
+</footer>
+
+
+</body>
+</html>
